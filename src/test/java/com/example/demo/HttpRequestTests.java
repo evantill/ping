@@ -20,7 +20,7 @@ public class HttpRequestTests {
 
     @Test
     public void homePageShouldReturnStaticPageContent() throws Exception {
-        assertThat(httpGetString("/")).contains("Welcome JSP");
+        assertThat(httpGetString("/home")).contains("Welcome JSP");
     }
 
     @Test
