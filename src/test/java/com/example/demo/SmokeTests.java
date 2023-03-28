@@ -3,8 +3,10 @@ package com.example.demo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.ui.Model;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 public class SmokeTests {
@@ -18,7 +20,6 @@ public class SmokeTests {
 
     @Autowired
     private HelloController helloController;
-
 
     @Autowired
     private WelcomeController welcomeController;
@@ -42,8 +43,14 @@ public class SmokeTests {
     }
 
     @Test
-    void welcomeControllerShouldRespondWelcome() {
-        assertThat(welcomeController).isNotNull();
-        assertThat(welcomeController.welcome()).isEqualTo("welcome");
+    void welcomeControllerControlerShouldReturnModel() {
+        //given
+        WelcomeData expected = new WelcomeData("dynamic title", "This is the Dynamic Welcome template");
+        Model model = mock(Model.class);
+        //when
+        String resp = welcomeController.welcome(model);
+        //then
+        assertThat(resp).isEqualTo("welcome");
+        verify(model).addAttribute(eq("data"),eq(expected));
     }
 }

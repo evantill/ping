@@ -43,9 +43,8 @@ public class HttpRequestTests {
 
     @Test
     public void welcomeControllerShouldReturnWellcomeTemplate() throws Exception {
-        assertThat(httpGetString("/welcome")).contains("This is the Welcome template");
+        assertThat(httpGetString("/welcome")).contains("This is the Dynamic Welcome template");
     }
-
 
     private String httpGetString(String url) {
         return this.restTemplate.getForObject(absoluteUrl(url), String.class);
