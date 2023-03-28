@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,13 +19,33 @@ public class HttpRequestTests {
 
     @Test
     public void homePageShouldReturnStaticPageContent() throws Exception {
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/", String.class)).contains("Welcome JSP");
+        assertThat(httpGetString("/")).contains("Welcome JSP");
     }
 
     @Test
     public void staticHtmlPageShouldBeVisisble() throws Exception {
-        String url = "http://localhost:" + port + "/static.html";
-        assertThat(this.restTemplate.getForObject(url, String.class)).contains("static HTML file");
+        assertThat(httpGetString("/static.html")).contains("static HTML file");
+    }
+
+    private String httpGetString(String url) {
+        return this.restTemplate.getForObject(absoluteUrl(url), String.class);
+    }
+
+    private String absoluteUrl(String url) {
+        StringBuilder absoluteUrl = new StringBuilder();
+        if(url.startsWith("http")) {
+            //absolute url
+            absoluteUrl.append(url);
+        }else{
+            //relative url
+            absoluteUrl.append("http://localhost:").append(port);
+            if(url.startsWith("/")){
+                absoluteUrl.append(url);
+            }else{
+                absoluteUrl.append('/').append(url);
+            }
+        }
+        return absoluteUrl.toString();
     }
 
 }

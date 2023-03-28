@@ -13,7 +13,7 @@ public class SmokeTests {
     private HomeController homeController;
 
     @Test
-    void homeControlerHelloReturnStaticContent() {
+    void homeControllerHelloReturnStaticContent() {
         assertThat(homeController).isNotNull();
         assertThat(homeController.hello()).contains("Welcome JSP");
     }
