@@ -21,7 +21,7 @@ public class HomeController {
         sb.append("</li>");
 
         sb.append("<li>");
-        sb.append("<a href=static/static.html>static HTML file</a>");
+        sb.append("<a href=static.html>static HTML file</a>");
         sb.append("</li>");
 
         sb.append("<li>");
