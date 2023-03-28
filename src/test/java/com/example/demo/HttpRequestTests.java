@@ -41,6 +41,12 @@ public class HttpRequestTests {
         assertThat(httpGetString("/static.html")).contains("static HTML file");
     }
 
+    @Test
+    public void welcomeControllerShouldReturnWellcomeTemplate() throws Exception {
+        assertThat(httpGetString("/welcome")).contains("This is the Welcome template");
+    }
+
+
     private String httpGetString(String url) {
         return this.restTemplate.getForObject(absoluteUrl(url), String.class);
     }

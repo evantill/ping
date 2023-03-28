@@ -20,6 +20,9 @@ public class SmokeTests {
     private HelloController helloController;
 
 
+    @Autowired
+    private WelcomeController welcomeController;
+
     @Test
     void homeControllerHelloReturnStaticContent() {
         assertThat(homeController).isNotNull();
@@ -36,5 +39,11 @@ public class SmokeTests {
     void helloControllerShouldRespondHello() {
         assertThat(helloController).isNotNull();
         assertThat(helloController.hello()).contains("hello in HTML");
+    }
+
+    @Test
+    void welcomeControllerShouldRespondWelcome() {
+        assertThat(welcomeController).isNotNull();
+        assertThat(welcomeController.welcome()).isEqualTo("welcome");
     }
 }
