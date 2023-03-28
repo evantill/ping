@@ -15,6 +15,11 @@ public class SmokeTests {
     @Autowired
     private PingController pingController;
 
+
+    @Autowired
+    private HelloController helloController;
+
+
     @Test
     void homeControllerHelloReturnStaticContent() {
         assertThat(homeController).isNotNull();
@@ -25,5 +30,11 @@ public class SmokeTests {
     void pingControllerShouldRespondPong() {
         assertThat(pingController).isNotNull();
         assertThat(pingController.ping()).contains("pong");
+    }
+
+    @Test
+    void helloControllerShouldRespondHello() {
+        assertThat(helloController).isNotNull();
+        assertThat(helloController.hello()).contains("hello in HTML");
     }
 }

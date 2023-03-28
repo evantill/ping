@@ -24,6 +24,11 @@ public class HttpRequestTests {
     }
 
     @Test
+    public void helloControllerShoudReturnHelloPage() throws Exception {
+        assertThat(httpGetString("/hello")).contains("hello in HTML");
+    }
+
+    @Test
     public void pingServiceShouldRespondPong() throws Exception {
         String resp = httpGetString("/ping");
         assertThat(resp).contains("pong");
