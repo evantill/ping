@@ -12,10 +12,18 @@ public class SmokeTests {
     @Autowired
     private HomeController homeController;
 
+    @Autowired
+    private PingController pingController;
+
     @Test
     void homeControllerHelloReturnStaticContent() {
         assertThat(homeController).isNotNull();
         assertThat(homeController.hello()).contains("Welcome JSP");
     }
 
+    @Test
+    void pingControllerShouldRespondPong() {
+        assertThat(pingController).isNotNull();
+        assertThat(pingController.ping()).contains("pong");
+    }
 }

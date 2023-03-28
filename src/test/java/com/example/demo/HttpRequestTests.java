@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.jayway.jsonpath.JsonPath;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +21,14 @@ public class HttpRequestTests {
     @Test
     public void homePageShouldReturnStaticPageContent() throws Exception {
         assertThat(httpGetString("/")).contains("Welcome JSP");
+    }
+
+    @Test
+    public void pingServiceShouldRespondPong() throws Exception {
+        String resp = httpGetString("/ping");
+        assertThat(resp).contains("pong");
+        String pong = JsonPath.parse(resp).read("$.pong");
+        assertThat(pong).isNotBlank();
     }
 
     @Test
