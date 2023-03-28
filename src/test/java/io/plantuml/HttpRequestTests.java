@@ -1,4 +1,4 @@
-package com.example.demo;
+package io.plantuml;
 
 import com.jayway.jsonpath.JsonPath;
 import org.junit.jupiter.api.Test;

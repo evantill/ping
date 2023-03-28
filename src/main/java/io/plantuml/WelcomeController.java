@@ -1,4 +1,4 @@
-package com.example.demo;
+package io.plantuml;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

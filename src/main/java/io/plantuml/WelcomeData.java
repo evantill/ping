@@ -1,4 +1,4 @@
-package com.example.demo;
+package io.plantuml;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.example.demo;
+package io.plantuml;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
